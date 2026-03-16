@@ -71,6 +71,16 @@ export default function WorkItemTrackerAPI() {
         }
     }
 
+    async function filterWorkItemsByTimePeriod(hours: number) {
+        try {
+            const response = await axios.get(`/api/workitems/timeframe/${hours}`);
+            return response.data as WorkItem[];
+        } catch (error) {
+            console.error(`Error filtering work items by time period "${hours}" hours:`, error);
+            throw error;
+        }
+    }
+
     return {
         createWorkItem,
         getWorkItems,
@@ -79,5 +89,6 @@ export default function WorkItemTrackerAPI() {
         deleteWorkItem,
         searchWorkItems,
         filterWorkItems,
+        filterWorkItemsByTimePeriod,
     };
 }

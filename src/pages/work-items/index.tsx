@@ -23,13 +23,17 @@ export default function WorkItemsPage() {
   const [filterStatus, setFilter] = useState("All");
   const [form, setForm] = useState<WorkItemFormData>(EMPTY_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [filterTimePeriod, setFilterTimePeriod] = useState<number | "All">("All");
 
   const viewItem = viewId != null ? items.find(i => i.id === viewId) ?? null : null;
 
   const fetchItems = useCallback(async () => {
     try {
       let result: WorkItem[];
-      if (search.trim()) {
+
+      if (filterTimePeriod !== "All") {
+        result = await api.filterWorkItemsByTimePeriod(filterTimePeriod);
+      } else if (search.trim()) {
         result = await api.searchWorkItems(search);
       } else if (filterStatus !== "All") {
         result = await api.filterWorkItems(filterStatus);
@@ -40,7 +44,7 @@ export default function WorkItemsPage() {
     } catch {
       console.error("Failed to fetch work items");
     }
-  }, [search, filterStatus]);
+  }, [search, filterStatus, filterTimePeriod]);
 
   useEffect(() => { fetchItems(); }, [fetchItems]);
 
@@ -108,6 +112,8 @@ export default function WorkItemsPage() {
               setSearch={setSearch}
               filterStatus={filterStatus}
               setFilter={setFilter}
+              filterTimePeriod={filterTimePeriod}
+              setFilterTimePeriod={setFilterTimePeriod}
             />
             <WorkItemList
               items={items}

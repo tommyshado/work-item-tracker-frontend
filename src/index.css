@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Geist", system-ui, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+  font-size: 14px;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 14px;
+}
+.wi-row:hover {
+  background: #f3f4f6 !important;
+}

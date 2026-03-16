@@ -1,0 +1,32 @@
+.delete-dialog {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 340px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.delete-dialog-label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.delete-dialog-title {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.delete-dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-danger {
+  background: #dc2626;
+  border-color: #dc2626;
+}

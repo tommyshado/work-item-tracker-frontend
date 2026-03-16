@@ -1,6 +1,8 @@
 import type WorkItem from "../../types/WorkItem";
 import StatusBadge from "../../components/status-badge/StatusBadge";
 import "./WorkItemDetail.css";
+import { formatDistanceToNow } from "date-fns";
+import { TWO_HOURS_IN_MS } from "../../types/WorkItem";
 
 interface WorkItemDetailProps {
   item: WorkItem;
@@ -16,7 +18,7 @@ export default function WorkItemDetail({ item, onBack, onEdit, onDelete }: WorkI
       <div className="detail-card">
         <div className="detail-top">
           <div>
-            <div className="meta-small">#{item.id} · {item.createdAt}</div>
+            <div className="meta-small">#{item.id} · {formatDistanceToNow(new Date(new Date(item.createdAt).getTime() + TWO_HOURS_IN_MS))} ago</div>
             <h1 className="detail-title">{item.title}</h1>
           </div>
           <div className="row">

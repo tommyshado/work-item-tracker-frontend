@@ -34,7 +34,7 @@ export default function WorkItemTrackerAPI() {
 
     async function updateWorkItem(id: number, data: Partial<WorkItem>) {
         try {
-            const response = await axios.put(`/api/workitems/${id}`, data);
+            const response = await axios.put(`/api/workitems/${id}`, {...data, id});
             return response.data as WorkItem;
         } catch (error) {
             console.error(`Error updating work item ${id}:`, error);

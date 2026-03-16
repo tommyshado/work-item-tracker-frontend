@@ -1,7 +1,7 @@
 export const STATUSES = [
   "Open",
   "Closed",
-  "In Progress",
+  "InProgress",
   "Blocked",
   "Done",
 ] as const;
@@ -20,7 +20,7 @@ export default interface WorkItem {
   description: string;
   status: string;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 }
 
 export type WorkItemFormData = {
@@ -39,3 +39,5 @@ export const TIME_PERIODS = [
   { period: 60, key: "Last 1 hour" },
   { period: 1440, key: "Last 24 hours" },
 ];
+
+export const TWO_HOURS_IN_MS = 2 * 60 * 60 * 1000;

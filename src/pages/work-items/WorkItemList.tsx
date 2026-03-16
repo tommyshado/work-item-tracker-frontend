@@ -1,6 +1,7 @@
 import type WorkItem from "../../types/WorkItem";
 import StatusBadge from "../../components/status-badge/StatusBadge";
 import "./WorkItemList.css";
+import { formatDistanceToNow } from "date-fns";
 
 interface WorkItemListProps {
   items: WorkItem[];
@@ -25,7 +26,7 @@ export default function WorkItemList({ items, onView, onEdit, onDelete }: WorkIt
           </div>
           <div className="item-meta" onClick={e => e.stopPropagation()}>
             <StatusBadge status={item.status} />
-            <span className="meta-small">{item.createdAt}</span>
+            <span className="meta-small">{formatDistanceToNow(new Date(item.createdAt))} ago</span>
             <button className="icon-btn" onClick={() => onEdit(item)}>✎</button>
             <button className="icon-btn icon-btn--danger" onClick={() => onDelete(item)}>✕</button>
           </div>

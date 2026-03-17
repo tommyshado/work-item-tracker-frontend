@@ -39,7 +39,7 @@ export default function WorkItemDetailPage() {
       <main className="main">
         <WorkItemDetail
           item={workItem}
-          onBack={() => navigate("/")}
+          onBack={() => navigate("/work-items")}
           onEdit={() => {
             openEdit(workItem);
             refetch();
